@@ -10,17 +10,11 @@ st.set_page_config(
     layout="wide"
 )
 
-# ============================================================
-# 전체 스타일 - 깔끔한 모던 디자인
-# ============================================================
 st.markdown("""
 <style>
-    /* 전체 배경 */
     .stApp {
         background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
     }
-
-    /* 사이드바 */
     section[data-testid="stSidebar"] {
         background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
         border-right: 1px solid rgba(255,255,255,0.05);
@@ -29,16 +23,11 @@ st.markdown("""
     section[data-testid="stSidebar"] .stMarkdown h3 {
         color: #e0e0e0 !important;
     }
-
-    /* 헤더 영역 */
     .hero-container {
         text-align: center;
         padding: 2rem 1rem 1rem 1rem;
     }
-    .hero-icon {
-        font-size: 3rem;
-        margin-bottom: 0.5rem;
-    }
+    .hero-icon { font-size: 3rem; margin-bottom: 0.5rem; }
     .hero-title {
         font-size: 2rem;
         font-weight: 700;
@@ -52,8 +41,6 @@ st.markdown("""
         color: #94a3b8;
         margin-bottom: 1.5rem;
     }
-
-    /* 카드 스타일 */
     .glass-card {
         background: rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(10px);
@@ -62,8 +49,6 @@ st.markdown("""
         padding: 1.5rem;
         margin-bottom: 1rem;
     }
-
-    /* 영상 정보 카드 */
     .video-title {
         font-size: 1.1rem;
         font-weight: 600;
@@ -76,8 +61,6 @@ st.markdown("""
         color: #94a3b8;
         margin-bottom: 0.3rem;
     }
-
-    /* 통계 카드 */
     .stat-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -101,8 +84,6 @@ st.markdown("""
         color: #64748b;
         margin-top: 0.2rem;
     }
-
-    /* 댓글 카드 */
     .comment-card {
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.06);
@@ -153,8 +134,6 @@ st.markdown("""
         border-radius: 20px;
         margin-right: 6px;
     }
-
-    /* 성공 메시지 */
     .success-banner {
         background: linear-gradient(90deg, rgba(52, 211, 153, 0.1), rgba(96, 165, 250, 0.1));
         border: 1px solid rgba(52, 211, 153, 0.2);
@@ -165,8 +144,6 @@ st.markdown("""
         font-weight: 600;
         margin-bottom: 1rem;
     }
-
-    /* 섹션 제목 */
     .section-title {
         font-size: 1.2rem;
         font-weight: 600;
@@ -175,15 +152,11 @@ st.markdown("""
         padding-bottom: 0.5rem;
         border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-
-    /* 구분선 */
     .divider {
         border: none;
         border-top: 1px solid rgba(255,255,255,0.06);
         margin: 1.5rem 0;
     }
-
-    /* Streamlit 기본 요소 커스텀 */
     .stTextInput > div > div > input {
         background: rgba(255, 255, 255, 0.05) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -199,8 +172,6 @@ st.markdown("""
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         border-radius: 10px !important;
     }
-
-    /* 버튼 */
     .stButton > button {
         background: linear-gradient(90deg, #7c3aed, #6366f1) !important;
         color: white !important;
@@ -213,10 +184,7 @@ st.markdown("""
     .stButton > button:hover {
         background: linear-gradient(90deg, #6d28d9, #4f46e5) !important;
         box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4) !important;
-        transform: translateY(-1px) !important;
     }
-
-    /* 다운로드 버튼 */
     .stDownloadButton > button {
         background: linear-gradient(90deg, #059669, #0d9488) !important;
         color: white !important;
@@ -226,10 +194,7 @@ st.markdown("""
     }
     .stDownloadButton > button:hover {
         background: linear-gradient(90deg, #047857, #0f766e) !important;
-        box-shadow: 0 4px 20px rgba(5, 150, 105, 0.4) !important;
     }
-
-    /* 탭 스타일 */
     .stTabs [data-baseweb="tab-list"] {
         gap: 4px;
         background: rgba(255,255,255,0.03);
@@ -245,48 +210,14 @@ st.markdown("""
         background: rgba(167, 139, 250, 0.15) !important;
         color: #a78bfa !important;
     }
-
-    /* 메트릭 */
     [data-testid="stMetric"] {
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 12px;
         padding: 1rem;
     }
-    [data-testid="stMetricLabel"] {
-        color: #64748b !important;
-    }
-    [data-testid="stMetricValue"] {
-        color: #e2e8f0 !important;
-    }
-
-    /* 데이터프레임 */
-    .stDataFrame {
-        border-radius: 12px;
-        overflow: hidden;
-    }
-
-    /* 경고/정보 메시지 */
-    .stAlert {
-        border-radius: 12px !important;
-    }
-
-    /* 스피너 */
-    .stSpinner > div {
-        color: #a78bfa !important;
-    }
-
-    /* 스크롤바 */
-    ::-webkit-scrollbar {
-        width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-        background: rgba(255,255,255,0.02);
-    }
-    ::-webkit-scrollbar-thumb {
-        background: rgba(255,255,255,0.1);
-        border-radius: 3px;
-    }
+    [data-testid="stMetricLabel"] { color: #64748b !important; }
+    [data-testid="stMetricValue"] { color: #e2e8f0 !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -300,9 +231,7 @@ def get_api_key():
         pass
 
     st.sidebar.markdown("### 🔑 API 키 설정")
-    st.sidebar.markdown(
-        "YouTube Data API v3 키를 입력하세요."
-    )
+    st.sidebar.markdown("YouTube Data API v3 키를 입력하세요.")
     st.sidebar.markdown("[📘 API 키 발급 방법 안내](https://console.cloud.google.com/apis/library/youtube.googleapis.com)")
     api_key = st.sidebar.text_input(
         "YouTube API Key",
@@ -313,11 +242,15 @@ def get_api_key():
 
 
 def extract_video_id(url):
+    """다양한 유튜브 URL 형식에서 video ID 추출"""
+    url = url.strip()
+
     patterns = [
         r'(?:v=)([a-zA-Z0-9_-]{11})',
         r'(?:youtu\.be/)([a-zA-Z0-9_-]{11})',
         r'(?:embed/)([a-zA-Z0-9_-]{11})',
         r'(?:shorts/)([a-zA-Z0-9_-]{11})',
+        r'^([a-zA-Z0-9_-]{11})$',
     ]
     for pattern in patterns:
         match = re.search(pattern, url)
@@ -327,27 +260,65 @@ def extract_video_id(url):
 
 
 def get_video_info(youtube, video_id):
+    """비디오 정보 가져오기 - 에러 상세 표시"""
     try:
         response = youtube.videos().list(
             part="snippet,statistics",
             id=video_id
         ).execute()
-        if response["items"]:
-            item = response["items"][0]
-            snippet = item["snippet"]
-            stats = item["statistics"]
-            return {
-                "title": snippet.get("title", ""),
-                "channel": snippet.get("channelTitle", ""),
-                "published": snippet.get("publishedAt", "")[:10],
-                "thumbnail": snippet.get("thumbnails", {}).get("high", {}).get("url", ""),
-                "view_count": int(stats.get("viewCount", 0)),
-                "like_count": int(stats.get("likeCount", 0)),
-                "comment_count": int(stats.get("commentCount", 0)),
-            }
-    except HttpError:
+
+        # 응답에 아이템이 없는 경우
+        if not response.get("items"):
+            st.error(f"❌ 비디오 ID `{video_id}`에 해당하는 영상을 찾을 수 없습니다.")
+            st.info("💡 URL을 다시 확인해주세요. 비공개/삭제된 영상일 수도 있습니다.")
+            return None
+
+        item = response["items"][0]
+        snippet = item["snippet"]
+        stats = item["statistics"]
+        return {
+            "title": snippet.get("title", ""),
+            "channel": snippet.get("channelTitle", ""),
+            "published": snippet.get("publishedAt", "")[:10],
+            "thumbnail": snippet.get("thumbnails", {}).get("high", {}).get("url", ""),
+            "view_count": int(stats.get("viewCount", 0)),
+            "like_count": int(stats.get("likeCount", 0)),
+            "comment_count": int(stats.get("commentCount", 0)),
+        }
+
+    except HttpError as e:
+        error_reason = ""
+        try:
+            import json
+            error_detail = json.loads(e.content.decode("utf-8"))
+            error_reason = error_detail["error"]["errors"][0]["reason"]
+            error_message = error_detail["error"]["errors"][0]["message"]
+        except Exception:
+            error_reason = "unknown"
+            error_message = str(e)
+
+        if error_reason == "keyInvalid":
+            st.error("❌ API 키가 유효하지 않습니다.")
+            st.info("💡 Google Cloud Console에서 API 키를 다시 확인해주세요.")
+        elif error_reason == "accessNotConfigured":
+            st.error("❌ YouTube Data API v3가 활성화되지 않았습니다.")
+            st.info("💡 Google Cloud Console → API 및 서비스 → 라이브러리에서 YouTube Data API v3를 '사용' 설정해주세요.")
+        elif error_reason == "quotaExceeded":
+            st.error("❌ API 일일 할당량을 초과했습니다.")
+            st.info("💡 내일 다시 시도하거나 Google Cloud Console에서 할당량을 확인하세요.")
+        elif error_reason == "forbidden":
+            st.error("❌ API 접근이 거부되었습니다.")
+            st.info("💡 API 키 제한 설정을 확인해주세요. 처음에는 '제한 없음'으로 설정하는 것을 추천합니다.")
+        else:
+            st.error(f"❌ API 오류 발생: {error_reason}")
+            st.code(error_message)
+
         return None
-    return None
+
+    except Exception as e:
+        st.error(f"❌ 예상치 못한 오류: {type(e).__name__}")
+        st.code(str(e))
+        return None
 
 
 def get_comments(youtube, video_id, max_comments=100):
@@ -387,26 +358,36 @@ def get_comments(youtube, video_id, max_comments=100):
             next_page_token = response.get("nextPageToken")
             if not next_page_token:
                 break
+
     except HttpError as e:
-        if e.resp.status == 403:
-            st.error("댓글이 비활성화된 영상이거나 API 할당량을 초과했습니다.")
+        try:
+            import json
+            error_detail = json.loads(e.content.decode("utf-8"))
+            error_reason = error_detail["error"]["errors"][0]["reason"]
+        except Exception:
+            error_reason = "unknown"
+
+        if error_reason == "commentsDisabled":
+            st.error("❌ 이 영상은 댓글이 비활성화되어 있습니다.")
+        elif error_reason == "quotaExceeded":
+            st.warning("⚠️ API 할당량 초과. 지금까지 수집된 댓글만 표시합니다.")
         else:
-            st.error(f"API 오류: {e}")
+            st.error(f"❌ 댓글 수집 중 오류: {error_reason}")
+
     return comments[:max_comments]
 
 
 def format_number(n):
     if n >= 100000000:
-        return f"{n/100000000:.1f}억"
+        return f"{n / 100000000:.1f}억"
     elif n >= 10000:
-        return f"{n/10000:.1f}만"
+        return f"{n / 10000:.1f}만"
     elif n >= 1000:
-        return f"{n/1000:.1f}천"
+        return f"{n / 1000:.1f}천"
     return f"{n:,}"
 
 
 def main():
-    # 헤더
     st.markdown("""
     <div class="hero-container">
         <div class="hero-icon">💬</div>
@@ -435,6 +416,29 @@ def main():
 
     youtube = build("youtube", "v3", developerKey=api_key)
 
+    # API 키 유효성 간단 테스트
+    st.sidebar.markdown("---")
+    if st.sidebar.button("🔍 API 키 테스트"):
+        try:
+            test = youtube.videos().list(part="snippet", id="dQw4w9WgXcQ").execute()
+            if test.get("items"):
+                st.sidebar.success("✅ API 키가 정상 작동합니다!")
+            else:
+                st.sidebar.error("❌ 응답은 왔지만 데이터가 없습니다.")
+        except HttpError as e:
+            st.sidebar.error(f"❌ API 오류: {e.resp.status}")
+            try:
+                import json
+                detail = json.loads(e.content.decode("utf-8"))
+                reason = detail["error"]["errors"][0]["reason"]
+                msg = detail["error"]["errors"][0]["message"]
+                st.sidebar.error(f"원인: {reason}")
+                st.sidebar.code(msg)
+            except Exception:
+                st.sidebar.code(str(e))
+        except Exception as e:
+            st.sidebar.error(f"❌ 오류: {e}")
+
     # 입력 영역
     col_input, col_option = st.columns([4, 1])
     with col_input:
@@ -449,6 +453,14 @@ def main():
             index=1
         )
 
+    # URL 입력 시 추출된 ID 미리보기
+    if url:
+        vid = extract_video_id(url)
+        if vid:
+            st.caption(f"📎 감지된 Video ID: `{vid}`")
+        else:
+            st.caption("⚠️ Video ID를 추출할 수 없습니다. URL을 확인해주세요.")
+
     search_button = st.button("💬 댓글 수집 시작", use_container_width=True)
 
     if search_button and url:
@@ -459,11 +471,10 @@ def main():
 
         with st.spinner("영상 정보를 불러오는 중..."):
             video_info = get_video_info(youtube, video_id)
+
         if not video_info:
-            st.error("영상 정보를 가져올 수 없습니다.")
             return
 
-        # 영상 정보 표시
         st.markdown('<hr class="divider">', unsafe_allow_html=True)
 
         col_thumb, col_info = st.columns([1, 2.5])
@@ -492,9 +503,9 @@ def main():
 
         st.markdown('<hr class="divider">', unsafe_allow_html=True)
 
-        # 댓글 수집
         with st.spinner(f"댓글을 수집하는 중... (최대 {max_comments}개)"):
             comments = get_comments(youtube, video_id, max_comments)
+
         if not comments:
             st.info("수집된 댓글이 없습니다.")
             return
@@ -527,13 +538,15 @@ def main():
 
             for _, row in display_df.iterrows():
                 reply_badge = '<span class="reply-badge">답글</span>' if row["유형"] == "답글" else ""
+                comment_text = row["댓글"].replace("<", "&lt;").replace(">", "&gt;")
+                author_text = row["작성자"].replace("<", "&lt;").replace(">", "&gt;")
                 st.markdown(f"""
                 <div class="comment-card">
                     <div class="comment-header">
-                        <div class="comment-author">{reply_badge}{row['작성자']}</div>
+                        <div class="comment-author">{reply_badge}{author_text}</div>
                         <div class="comment-date">{row['작성일']}</div>
                     </div>
-                    <div class="comment-body">{row['댓글']}</div>
+                    <div class="comment-body">{comment_text}</div>
                     <div class="comment-likes">♥ <span>{row['좋아요']}</span></div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -552,7 +565,6 @@ def main():
         with tab3:
             top_comments = df[df["유형"] == "댓글"]
             reply_comments = df[df["유형"] == "답글"]
-
             c1, c2, c3, c4 = st.columns(4)
             c1.metric("전체 수집", f"{len(df)}개")
             c2.metric("댓글", f"{len(top_comments)}개")
@@ -563,7 +575,6 @@ def main():
             top10 = df.nlargest(10, "좋아요")[["작성자", "댓글", "좋아요", "작성일"]]
             st.dataframe(top10, use_container_width=True, hide_index=True)
 
-        # 다운로드
         st.markdown('<hr class="divider">', unsafe_allow_html=True)
         csv_data = df.to_csv(index=False, encoding="utf-8-sig")
         st.download_button(
